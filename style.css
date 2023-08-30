@@ -12,7 +12,7 @@ body {
     display: flex;
     background-color: #715050;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
     width: auto;
     padding: 80px;
@@ -62,3 +62,4 @@ body {
     flex-wrap: wrap;
     
 }
+

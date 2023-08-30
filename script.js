@@ -18,8 +18,8 @@ function showProducts(products) {
                 <p class="">${product.price}</p>
                 <p class="">${product.description}</p>
 
-                <button class="deleteButton" onclick="deleteButton()" data-id="${product.id}">Borrar</button>
-                <button class="updateButton" data-id="${product.id}">Actualizar</button>
+                <button class="deleteButton" click data-id="${product.id}">eliminar</button>
+                <button class="updateButton" click data-id="${product.id}">Actualizar</button>
             </div>
         `;
 
@@ -34,6 +34,7 @@ function fetchProducts() {
         .catch(error => console.log(error));
 }
 
+
 async function fetchAndShowProducts() {
     const products = await fetchProducts();
     showProducts(products);
@@ -43,19 +44,22 @@ async function deleteProduct(productId) {
     await fetch(`https://64eb5a4de51e1e82c5773fef.mockapi.io/products/${productId}`, {
         method: "DELETE"
     });
+    
 
     fetchAndShowProducts(); // Actualizar la lista de productos después de borrar uno
 }
 
-const deleteButtons = document.querySelectorAll(".deleteButton");
-    deleteButtons.forEach(button => {
+const deleteButton = document.querySelectorAll(".deleteButton");
+    deleteButton.forEach(button => {
         button.addEventListener("click", () => {
-            // const productId = button.getAttribute("data-id");
-            // deleteProduct(productId);
-
-            console.log('eliminado')
+            const productId = button.getAttribute("data-id");
+            deleteProduct(productId);
         });
     });
+
+            console.log('eliminado')
+        
+    
 
 const form = document.querySelector('#productForm');
 
@@ -93,9 +97,13 @@ form.addEventListener('submit', async (event) => {
     }
 });
 
-// Cargar productos al cargar la página
+// mostrar productos al cargar la página
 window.onload = fetchAndShowProducts;
 
 
 
 
+
+      
+
+ 
