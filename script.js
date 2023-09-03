@@ -1,4 +1,5 @@
-function showForm() {
+
+function showForm(productId) {
     const productForm = document.querySelector('#productForm');
     productForm.style.display = 'flex';
 }
@@ -17,15 +18,31 @@ function showProducts(products) {
                 <p class="">${product.name}</p>
                 <p class="">${product.price}</p>
                 <p class="">${product.description}</p>
-
-                <button class="deleteButton" click data-id="${product.id}">eliminar</button>
-                <button class="updateButton" click data-id="${product.id}">Actualizar</button>
+                <button class="updateButton" data-id="${product.id}" onclick="updateProduct(${product.id})">Actualizar</button>
             </div>
         `;
 
+        const deleteButton = document.createElement("button"); // Eliminar elementos
+        deleteButton.textContent = "Eliminar";
+        deleteButton.className = "deleteButton"
+        const productId = product.id;
+        deleteButton.addEventListener("click", () => {
+            deleteProduct(productId);
+            console.log(`Eliminado ${productId}`)
+        });
+        
+        const form = document.querySelector('#productForm');
+
         cardProduct.innerHTML = content;
         productsContainer.appendChild(cardProduct);
+        cardProduct.appendChild(deleteButton);
     });
+}
+
+function cancelUpdate() {
+    const productForm = document.querySelector('#productForm');
+    productForm.style.display = 'none';
+    form.reset()
 }
 
 function fetchProducts() {
@@ -47,19 +64,59 @@ async function deleteProduct(productId) {
     
 
     fetchAndShowProducts(); // Actualizar la lista de productos después de borrar uno
+}    
+
+async function updateProduct(productId) {
+    const productToUpdate = await fetchProductById(productId);
+    if (productToUpdate) {
+        // Llenar el formulario de edición con los datos del producto existente
+        document.querySelector('#image').value = productToUpdate.urlImage;
+        document.querySelector('#name').value = productToUpdate.name;
+        document.querySelector('#price').value = productToUpdate.price;
+        document.querySelector('#description').value = productToUpdate.description;
+
+        // Mostrar el formulario de edición
+        const productForm = document.querySelector('#productForm');
+        productForm.style.display = 'flex';
+
+        // Agregar un evento al formulario de edición para realizar la actualización
+        productForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            // Realizar la solicitud PUT para actualizar el producto en el servidor
+
+            await fetch(`https://64eb5a4de51e1e82c5773fef.mockapi.io/products/${productId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    urlImage: document.querySelector('#image').value,
+                    name: document.querySelector('#name').value,
+                    price: document.querySelector('#price').value,
+                    description: document.querySelector('#description').value
+                })
+            });
+
+            // Ocultar el formulario de edición y actualizar la lista de productos
+            productForm.style.display = 'none';
+            fetchAndShowProducts();
+        });
+    }
 }
 
-const deleteButton = document.querySelectorAll(".deleteButton");
-    deleteButton.forEach(button => {
-        button.addEventListener("click", () => {
-            const productId = button.getAttribute("data-id");
-            deleteProduct(productId);
-        });
-    });
-
-            console.log('eliminado')
-        
-    
+async function fetchProductById(productId) {
+    try {
+        const response = await fetch(`https://64eb5a4de51e1e82c5773fef.mockapi.io/products/${productId}`);
+        if (response.ok) {
+            const product = await response.json();
+            return product;
+        } else {
+            console.error('Error al obtener el producto por ID');
+            return null;
+        }
+    } catch (error) {
+        console.error('Error en la solicitud para obtener el producto por ID:', error);
+        return null;
+    }
+}
 
 const form = document.querySelector('#productForm');
 
@@ -93,12 +150,13 @@ form.addEventListener('submit', async (event) => {
         setTimeout(() => {
             form.style.display = 'none';
             form.reset();
-        }, 2000);
+        }, 1000);
     }
 });
 
 // mostrar productos al cargar la página
 window.onload = fetchAndShowProducts;
+
 
 
 
