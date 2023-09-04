@@ -41,6 +41,23 @@ body {
     margin-top: 20px;
 }
 
+#productForm2 {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    text-align: center;
+    margin: 0% auto;
+    background: #918c8cf0;
+    padding: 30px;
+    width: 500px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
 .cardProduct {
     display: flex;
     justify-content: center;
@@ -63,4 +80,6 @@ body {
     
 }
 
-
+.deleteButton { /* este es la clase del boton eliminar */
+    
+}

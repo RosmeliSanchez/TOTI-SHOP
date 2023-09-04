@@ -45,6 +45,12 @@ function cancelUpdate() {
     form.reset()
 }
 
+function cancelUpdate2() {
+    const productForm = document.querySelector('#productForm2');
+    productForm.style.display = 'none';
+    form.reset()
+}
+
 function fetchProducts() {
     return fetch("https://64eb5a4de51e1e82c5773fef.mockapi.io/products")
         .then(response => response.json())
@@ -70,17 +76,25 @@ async function updateProduct(productId) {
     const productToUpdate = await fetchProductById(productId);
     if (productToUpdate) {
         // Llenar el formulario de edición con los datos del producto existente
-        document.querySelector('#image').value = productToUpdate.urlImage;
-        document.querySelector('#name').value = productToUpdate.name;
-        document.querySelector('#price').value = productToUpdate.price;
-        document.querySelector('#description').value = productToUpdate.description;
+        document.querySelector('#image2').value = productToUpdate.urlImage;
+        document.querySelector('#name2').value = productToUpdate.name;
+        document.querySelector('#price2').value = productToUpdate.price;
+        document.querySelector('#description2').value = productToUpdate.description;
 
         // Mostrar el formulario de edición
-        const productForm = document.querySelector('#productForm');
+        const productForm = document.querySelector('#productForm2');
         productForm.style.display = 'flex';
 
+        // Obtener una referencia al formulario
+        const form = document.querySelector('#productForm2');
+
+        // Verificar si ya existe un evento de escucha en el formulario y eliminarlo si es necesario
+        if (form.hasEventListener) {
+            form.removeEventListener('submit', formSubmitHandler);
+        }
+
         // Agregar un evento al formulario de edición para realizar la actualización
-        productForm.addEventListener('submit', async (event) => {
+        const formSubmitHandler = async (event) => {
             event.preventDefault();
             // Realizar la solicitud PUT para actualizar el producto en el servidor
 
@@ -88,17 +102,20 @@ async function updateProduct(productId) {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    urlImage: document.querySelector('#image').value,
-                    name: document.querySelector('#name').value,
-                    price: document.querySelector('#price').value,
-                    description: document.querySelector('#description').value
+                    urlImage: document.querySelector('#image2').value,
+                    name: document.querySelector('#name2').value,
+                    price: document.querySelector('#price2').value,
+                    description: document.querySelector('#description2').value
                 })
             });
 
             // Ocultar el formulario de edición y actualizar la lista de productos
             productForm.style.display = 'none';
             fetchAndShowProducts();
-        });
+        };
+
+        // Agregar el nuevo evento de escucha al formulario
+        form.addEventListener('submit', formSubmitHandler);
     }
 }
 
