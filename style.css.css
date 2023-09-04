@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    }
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.header-wrapper {
+    display: flex;
+    background-color: #715050;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    width: auto;
+    padding: 80px;
+
+}
+
+
+.alert {
+    display: none;
+}
+
+#productForm {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    text-align: center;
+    margin: 0% auto;
+    background: #918c8cf0;
+    padding: 30px;
+    width: 500px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.cardProduct {
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+    border: 1px solid #310202;
+    margin: 20px 10px 10px 10px;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: center;
+    
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
