@@ -13,29 +13,25 @@ function showProducts(products) {
         cardProduct.className = "cardProduct"; // Asignar una clase para el estilo CSS
 
         const content = `
-            <div>
+            <div class="card">
                 <img src=${product.urlImage} alt="image" class="cardImg" />
                 <p class="">${product.name}</p>
-                <p class="">${product.price}</p>
+                <p class="">${product.price}R$</p>
                 <p class="">${product.description}</p>
-                <button class="updateButton" data-id="${product.id}" onclick="updateProduct(${product.id})">Actualizar</button>
+                <div >
+                    <button class="updateButton" data-id="${product.id}" onclick="updateProduct(${product.id})">Actualizar</button>
+
+                    <button class="deleteButton" data-id="${product.id}" onclick="deleteProduct(${product.id})">Eliminar</button>
+                </div>
             </div>
         `;
 
-        const deleteButton = document.createElement("button"); // Eliminar elementos
-        deleteButton.textContent = "Eliminar";
-        deleteButton.className = "deleteButton"
-        const productId = product.id;
-        deleteButton.addEventListener("click", () => {
-            deleteProduct(productId);
-            console.log(`Eliminado ${productId}`)
-        });
         
         const form = document.querySelector('#productForm');
 
         cardProduct.innerHTML = content;
         productsContainer.appendChild(cardProduct);
-        cardProduct.appendChild(deleteButton);
+        
     });
 }
 
@@ -45,11 +41,6 @@ function cancelUpdate() {
     form.reset()
 }
 
-function cancelUpdate2() {
-    const productForm = document.querySelector('#productForm2');
-    productForm.style.display = 'none';
-    form.reset()
-}
 
 function fetchProducts() {
     return fetch("https://64eb5a4de51e1e82c5773fef.mockapi.io/products")

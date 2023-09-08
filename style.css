@@ -10,12 +10,31 @@ body {
 
 .header-wrapper {
     display: flex;
-    background-color: #715050;
+    background-color: #4a1c49;
     align-items: center;
     justify-content: space-between;
     text-align: center;
     width: auto;
     padding: 80px;
+
+}
+
+.title {
+    font-size: 60px;
+    color: #E84F30;
+    text-shadow: 2px 4px 5px;
+}
+
+.logo-title {
+    width: 800px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+}
+
+.logo {
+    width: 80px;
 
 }
 
@@ -34,7 +53,7 @@ body {
     right: 0%;
     text-align: center;
     margin: 0% auto;
-    background: #918c8cf0;
+    background: #E84F30;
     padding: 30px;
     width: 500px;
     border-radius: 5px;
@@ -51,15 +70,28 @@ body {
     right: 0%;
     text-align: center;
     margin: 0% auto;
-    background: #918c8cf0;
+    background: #E84F30;
     padding: 30px;
     width: 500px;
     border-radius: 5px;
     margin-top: 20px;
 }
 
+label {
+    font-size: 25px;
+    color: #4a1c49;
+
+}
+.input {
+    width: 100%;
+    padding: 10px;
+}
+
+
 .cardProduct {
+    background-color: #e8c4e8;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     width: 400px;
     height: 400px;
@@ -70,16 +102,56 @@ body {
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     text-align: center;
-    
+}
+
+.cardImg {
+    width: 300px;
 }
 
 .content {
+    background-color: #f4e1f3;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
+    gap: 10px;
+}
+
+.btn-add-product {
+    width: 250px;
+    padding: 15px;
+    color: #4a1c49;
+    border-radius: 20px;
+    margin: 5px 0;
+    border-color: #3498db;
+    font-size: 18px;
+    font-weight: 700;
+    box-shadow: 0 0 40px 40px #f5b3a6 inset, 0 0 0 0 #f5b3a6;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.btn-add-product:hover {
+    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+
+} 
+
+.updateButton {
+    width: 20%;
+    padding: 5px;
+    background-color: #f5b3a6;
+    color: #72230b;
     
 }
 
-.deleteButton { /* este es la clase del boton eliminar */
+.deleteButton {
+    width: 20%;
+    padding: 5px;
+    background-color: #f5b3a6;
+    color: #72230b;
     
 }
+
+
+
+
+
