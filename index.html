@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <meta name="viewport" content="width=initial-scale=1.0"> -->
+    <meta name="viewport" content="width=initial-scale=1.0">
     <title>TOTI-PET-SHOP</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -18,7 +18,7 @@
 
                 <h1 class="title">TOTI-PET-SHOP</h1>
 
-                <img class="logo" src="https://cdn-icons-png.flaticon.com/512/12/12638.png" alt="">
+                <img class="logo" src="https://cdn-icons-png.flaticon.com/512/12/12638.png" alt="logo-pet">
             </div>
 
             <button class="btn-add-product" onclick="showForm()">
@@ -39,8 +39,10 @@
         <label>Descripção</label>
         <input class="input"type="text" id="description" />
 
-        <button class="btn-add-product" type="submit">Cadastrar Produto</button>
+        <div class="button-form">
+            <button class="btn-add-product" type="submit">Cadastrar Produto</button>
         <button class="btn-add-product" type="submit" onclick="cancelUpdate()">Cancelar</button>
+        </div>
 
         <p class="alert"></p>
     </form>
@@ -58,14 +60,44 @@
         <label>Descripção</label>
         <input class="input"type="text" id="description2" />
 
-        <button class="btn-add-product" type="submit">Actualizar</button>
+        <div class="button-form">
+            <button class="btn-add-product" type="submit">Atualizar</button>
         <button class="btn-add-product" type="submit" onclick="cancelUpdate2()">Cancelar</button>
+        </div>
 
 
         <p class="alert"></p>
     </form>
 
     <div class="content"></div>
+
+    <footer>
+        <div class="footer-info">
+            
+                <div class="logo-title">
+    
+                    <h1 class="title">TOTI-PET-SHOP</h1>
+    
+                    <img class="logo" src="https://cdn-icons-png.flaticon.com/512/12/12638.png" alt="logo-pet">
+                </div>
+            
+    
+            <div class="integrantes">
+                
+                    Site desenvolvido por
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/rosmeli-sanchez-7785b3198/" target="_blank">Sanchez T, Rosmeli</a></li>
+                        <li><a href="" target="_blank">Stwart A, Franciobis</a></li>
+                        <li><a href="" target="_blank">Rondon, Maria Andreina</a></li>
+                        
+                    </ul>
+            
+            </div>
+    
+        </div>
+
+        <span class="copyright">Direitos Reservados &copy; 2023</span>
+    </footer>
 
     <script src="script.js"></script>
 </body>
