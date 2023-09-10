@@ -1,5 +1,5 @@
 
-function showForm(productId) {
+function showForm() {
     const productForm = document.querySelector('#productForm');
     productForm.style.display = 'flex';
 }
@@ -15,11 +15,15 @@ function showProducts(products) {
         const content = `
             <div class="card">
                 <img src=${product.urlImage} alt="image" class="cardImg" />
-                <p class="">${product.name}</p>
-                <p class="">${product.price}R$</p>
-                <p class="">${product.description}</p>
-                <div >
-                    <button class="updateButton" data-id="${product.id}" onclick="updateProduct(${product.id})">Actualizar</button>
+                
+                <div class="details">
+                    <p class="name">${product.name}</p>
+                    <p class="price">${product.price} R$</p>
+                    <p class="description">${product.description}</p>
+                </div>
+                
+                <div class="button-container">
+                    <button class="updateButton" data-id="${product.id}" onclick="updateProduct(${product.id})">Atualizar</button>
 
                     <button class="deleteButton" data-id="${product.id}" onclick="deleteProduct(${product.id})">Eliminar</button>
                 </div>
